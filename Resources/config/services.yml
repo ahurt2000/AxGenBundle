@@ -1,0 +1,9 @@
+parameters:
+#    acme_ax_gen.example.class: Acme\AxGenBundle\Example
+
+services:
+  addslashes_extension: 
+     class: Acme\AxGenBundle\Extension\AddslashesTwigExtension
+     tags:
+        -  { name: twig.extension }
+

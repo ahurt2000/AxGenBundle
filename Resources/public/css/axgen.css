@@ -1,0 +1,34 @@
+/* 
+    Document   : axgen
+    Created on : 23-jul-2011, 22:48:52
+    Author     : alejandro hurtado 
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+html, body
+{
+    background-color: #EFEFEF;
+}
+
+body
+{
+    font-size:        14px;
+    font-family:      "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+    color:            #313131;
+}
+
+
+
+#symfony-header
+{
+    position: relative;
+    padding: 30px 30px 20px 30px;
+}
+
+#symfony-wrapper
+{
+    width:  970px;
+    margin: 0 auto;
+}
+

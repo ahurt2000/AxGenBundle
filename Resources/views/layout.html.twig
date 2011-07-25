@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    {#  <link rel="stylesheet" href="{{ asset('bundles/acmedemo/css/demo.css') }}" type="text/css" media="all" />
+   #}
+    <link rel="stylesheet" href="{{ asset('bundles/acmeaxgen/css/axgen.css') }}" type="text/css" media="all" />
+    <title>{% block title %}Demo Bundle{% endblock %}</title>
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+      {% block ext_core %}    
+        <link rel="stylesheet" type="text/css" href="http://extjs-public.googlecode.com/svn/tags/ext-2.2/release/resources/css/ext-all.css">
+        <script type="text/javascript" src="http://extjs-public.googlecode.com/svn/tags/ext-2.2/release/adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="http://extjs-public.googlecode.com/svn/tags/ext-2.2/release/ext-all.js"></script>
+      {% endblock %}
+        
+      {% block axgen_js %}
+        <!-- empty //-->
+      {% endblock %}
+    </head>
+    <body>
+        <div id="symfony-wrapper">
+            <div id="symfony-header">
+                
+            </div>
+
+            {% if app.session.flash('notice') %}
+                <div class="flash-message">
+                    <em>Notice</em>: {{ app.session.flash('notice') }}
+                </div>
+            {% endif %}
+
+            {% block content_header %}
+                <ul id="menu">
+                    {% block content_header_more %}
+                        <li><a href="#"  id="generate_bundle" > Bundle</a></li>
+                        <li><a href="#"  id="generate_entity" > Entity</a></li>
+                    {% endblock %}
+                </ul>
+
+                <div style="clear: both"></div>
+            {% endblock %}
+
+           <div class="symfony-content">
+                {% block content %}
+                algo aqui
+                {% endblock %}
+            </div>
+
+        </div>
+
+    </body>
+</html>

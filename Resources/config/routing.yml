@@ -1,0 +1,16 @@
+# /axgen/myBundle
+AxGenBundle_homepage:
+    pattern:  /axgen
+    defaults: { _controller: AcmeAxGenBundle:Default:index }
+    
+AxGenBundle_gen_bundle:
+    pattern:  /axgen/generate
+    defaults: { _controller: AcmeAxGenBundle:Default:genBundle }
+
+AxGenBundle_list_bundle:
+    pattern:  /axgen/listbundles
+    defaults: { _controller: AcmeAxGenBundle:Default:list }    
+    
+AxGenBundle_gen_entity:
+    pattern:  /axgen/genentity
+    defaults: { _controller: AcmeAxGenBundle:Default:genEntity }    

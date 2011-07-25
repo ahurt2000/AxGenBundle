@@ -1,0 +1,48 @@
+{% extends "AcmeAxGenBundle::layout.html.twig" %}
+
+{% block title "Bundle Generator" %}
+
+{% block ext_core %}
+  <link rel="stylesheet" type="text/css" href="{{ asset('bundles/acmeaxgen/js/ext/resources/css/ext-all.css')}}" />
+  {#<link rel="stylesheet" type="text/css" href="{{ asset('bundles/acmeaxgen/js/ext/resources/css/xtheme-gray.css')}}" />    #}
+  <script type="text/javascript" src="{{ asset('bundles/acmeaxgen/js/ext/adapter/ext/ext-base.js')}}" /></script>
+  <script type="text/javascript" src="{{ asset('bundles/acmeaxgen/js/ext/ext-all-debug.js')}}" /></script>
+  <script type="text/javascript" >
+    <!--
+    Ext.BLANK_IMAGE_URL = "{{ asset('bundles/acmeaxgen/js/ext/resources/images/default/s.gif')}}" ;
+    root_dir = "{{ root_dir|addslashes|raw }}";
+    gen_url = "{{ path('AxGenBundle_gen_bundle')|addslashes|raw }}";
+    list_url = "{{ path('AxGenBundle_list_bundle')|addslashes|raw }}";
+    gen_entity_url = "{{ path('AxGenBundle_gen_entity')|addslashes|raw }}";
+    //-->
+  </script>
+{% endblock %}   
+ 
+{% block axgen_js %}
+    <script type="text/javascript" src="{{ asset('bundles/acmeaxgen/js/patch.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/acmeaxgen/js/Ext.ux.renderer.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/acmeaxgen/js/axgen.formats.combo.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/acmeaxgen/js/axgenBundleMenu.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/acmeaxgen/js/axgenBundleApp.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/acmeaxgen/js/axgenBundleWin.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/acmeaxgen/js/axgenEntityWin.js') }}"></script>
+{% endblock %}
+
+{% block content_header %}
+    <ul id="menu"></ul>
+    <div style="clear: both"></div>
+{% endblock %}
+    
+{% block content %}
+    <h1>AxGenerator Bundle</h1>
+    <p>Easy generator helper. Use the menu for actions.</p>
+    <div id="axgen-content" ></div>
+    <div id="">
+        <h2>Registered bundles list</h2>
+        <ul>
+        {% for bundle in bundles %}
+            <li>{{ bundle.name }}</li>
+        {% endfor %}
+        </ul>
+    </div>
+{% endblock %}    
