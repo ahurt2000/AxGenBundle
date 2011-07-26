@@ -23,7 +23,6 @@ Ext.extend(AxGen.BundleMenu, Ext.Toolbar, {
             xtype: 'tbbutton',  
             text: 'New Bundle',
             handler: function(){
-//                if(typeof bundlewin == "undefined")
                 bundlewin = new AxGen.BundleWin();
                 bundlewin.show();
             },
@@ -45,15 +44,16 @@ Ext.extend(AxGen.BundleMenu, Ext.Toolbar, {
                 entitywin.show();
             }
         },{
-            text: 'Setters/getter',
-            handler: function(){
-                Ext.MessageBox.alert("Sorry"," :( This is not developed yet");
-            }
-        },{
             text: 'Entities',
             handler: function(){
+                entitieswin = new AxGen.EntitiesWin();
+                entitieswin.show();
+            }           
+        },{            
+            text: 'CRUD',
+            handler: function(){
                 Ext.MessageBox.alert("Sorry"," :( This is not developed yet");
-            }
+            } 
         }]
     }]
 

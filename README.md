@@ -13,6 +13,7 @@ now works:
 
 - bundle generator
 - doctrine entity generator
+- entities
 
 
 Install
@@ -21,10 +22,8 @@ Install
 - Download and unzip. 
 - Edit app/AppKernel.php and add this: 
     
-   a) ``` $bundles[] = new Acme\AxGenBundle\AcmeAxGenBundle();  ```
+    + ``` $bundles[] = new Acme\AxGenBundle\AcmeAxGenBundle();  ```
        ( for *dev* enviroment only **recommended** )
-        or
-   b) new Acme\AxGenBundle\AcmeAxGenBundle(),
 
 - Add a route:
     
@@ -58,3 +57,6 @@ The application show you a menu for easy access to the differents options:
 
   ![New entity screenshot](http://i53.tinypic.com/2zyfou8.png)
 
+- Entities: Update all entities 
+
+  ![Generate/update entities](http://i55.tinypic.com/e7ch1f.png)

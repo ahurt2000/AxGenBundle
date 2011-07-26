@@ -14,6 +14,7 @@
     gen_url = "{{ path('AxGenBundle_gen_bundle')|addslashes|raw }}";
     list_url = "{{ path('AxGenBundle_list_bundle')|addslashes|raw }}";
     gen_entity_url = "{{ path('AxGenBundle_gen_entity')|addslashes|raw }}";
+    gen_entities_url = "{{ path('AxGenBundle_gen_entities')|addslashes|raw }}";
     //-->
   </script>
 {% endblock %}   
@@ -26,6 +27,7 @@
     <script type="text/javascript" src="{{ asset('bundles/acmeaxgen/js/axgenBundleApp.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/acmeaxgen/js/axgenBundleWin.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/acmeaxgen/js/axgenEntityWin.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/acmeaxgen/js/axgenEntitiesWin.js') }}"></script>
 {% endblock %}
 
 {% block content_header %}
@@ -34,15 +36,15 @@
 {% endblock %}
     
 {% block content %}
+    <div id="axgen-content" ></div>
     <h1>AxGenerator Bundle</h1>
     <p>Easy generator helper. Use the menu for actions.</p>
-    <div id="axgen-content" ></div>
-    <div id="">
+    {#<div id="">
         <h2>Registered bundles list</h2>
         <ul>
         {% for bundle in bundles %}
             <li>{{ bundle.name }}</li>
         {% endfor %}
         </ul>
-    </div>
+    </div>#}
 {% endblock %}    

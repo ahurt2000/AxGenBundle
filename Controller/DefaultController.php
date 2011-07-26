@@ -6,9 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Acme\AxGenBundle\AxGenerator\AxBundleGeneratorCall;
 use Acme\AxGenBundle\AxGenerator\AxDoctrineEntityGeneratorCall;
+use Acme\AxGenBundle\AxGenerator\AxDoctrineEntitiesGeneratorCall;
 
 use Symfony\Component\DependencyInjection\Container;
-
 
 class DefaultController extends Controller {
 
@@ -54,7 +54,11 @@ class DefaultController extends Controller {
         return new Response(json_encode(array('data'=>$bundles,'total'=>$total)));
     }
     
-    
+    /**
+     * Generate Entity
+     * 
+     * @return Response 
+     */
     public function genEntityAction(){
         $request = $this->getRequest();
         $kernel = $this->container->get('kernel');
@@ -64,4 +68,22 @@ class DefaultController extends Controller {
         
         return new Response(json_encode($output)); 
     }
+    
+    /**
+     * Generate/update entities 
+     * 
+     * @return Response 
+     */
+    public function genEntitiesAction()
+    {
+        $request = $this->getRequest();
+        $kernel = $this->container->get('kernel');
+        $doctrine = $this->container->get('doctrine');
+        
+        $generator = new AxDoctrineEntitiesGeneratorCall();
+        $output = $generator->execute($request,$kernel,$doctrine);
+        
+        return new Response(json_encode($output)); 
+    }
+    
 }

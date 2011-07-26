@@ -71,6 +71,8 @@ Ext.extend(AxGen.EntityWin, Ext.Window, {
             reader: bundleReader
         });
         
+        dsbundles.sort("name","ASC"); 
+        
         this.comboBundles = new Ext.form.ComboBox({
             fieldLabel: 'Bundle',
             forceSelection:true,
@@ -98,9 +100,9 @@ Ext.extend(AxGen.EntityWin, Ext.Window, {
         this.entity_name = this.add(new Ext.form.TextField({
             fieldLabel: 'Entity name', 
             name: 'txtEntityName', 
-            anchor: '64%',
+            anchor: '80%',
             blankText: 'something like "Blog/Post"',
-            emptyText: 'Blog/Post',
+            emptyText: 'bundle/Entity',
             allowBlank: false          
         }));
              
