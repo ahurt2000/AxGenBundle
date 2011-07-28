@@ -11,7 +11,7 @@
 Ext.ns('AxGen.Formats.Combo');
 AxGen.Formats.Combo = function(config){
     Ext.apply(this, config);
-    AxGen.EntityWin.superclass.constructor.call(this);
+    AxGen.Formats.Combo.superclass.constructor.call(this);
 }
 
 Ext.extend(AxGen.Formats.Combo,Ext.form.ComboBox,{

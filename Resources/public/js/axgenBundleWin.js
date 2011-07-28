@@ -55,35 +55,7 @@ Ext.extend(AxGen.BundleWin, Ext.Window, {
     init: function(){
         me = this;
         
-        /*  */
-        var bundle_rec = Ext.data.Record.create([
-            { name: 'name'} 
-        ]);
-        
-        var bundleReader = new Ext.data.JsonReader({
-            root: "data",
-            totalProperty: "total"
-        }, bundle_rec);      
-        
-        var store_bundles_list = new Ext.data.Store({
-            url: list_url,
-            autoLoad: true,
-            reader: bundleReader
-        });        
-        store_bundles_list.load();
-        store_bundles_list.sort('name','ASC');
-        
-        this.bundle_list = new Ext.grid.GridPanel({
-//            title: 'Registered bundles',
-            store: store_bundles_list,
-            stripeRows: true,
-            height: 278,
-            columns: [{
-                    header: 'Registered bundles',
-                    width: 150,
-                    dataIndex: 'name'
-            }]
-        });
+        this.bundle_list = new AxGen.Bundles.List();
 
         /* value setted to AcmexxxBundle when bundle name is setted */
         this.bundle_namespace = new Ext.form.TextField({

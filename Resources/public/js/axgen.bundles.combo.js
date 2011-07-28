@@ -11,7 +11,7 @@
 Ext.ns('AxGen.Bundles.Combo');
 AxGen.Bundles.Combo = function(config){
     Ext.apply(this, config);
-    AxGen.EntityWin.superclass.constructor.call(this);
+    AxGen.Bundles.Combo.superclass.constructor.call(this);
     this.init();
 }
 

@@ -30,7 +30,8 @@ Ext.extend(AxGen.BundleMenu, Ext.Toolbar, {
         },{
             text: 'Registered Bundles',
             handler: function(){
-                Ext.MessageBox.alert("Sorry"," :( This is not developed yet");
+                bundlelistwin = new AxGen.BundleListWin();
+                bundlelistwin.show();
             }
            
         }]
@@ -38,6 +39,11 @@ Ext.extend(AxGen.BundleMenu, Ext.Toolbar, {
         xtype: 'tbbutton',
         text: 'Doctrine',
         menu: [{
+            text: 'Database create',
+            handler: function(){
+                Ext.MessageBox.alert("Sorry"," :( This is not developed yet");
+            }              
+        },{
             text: 'New Entity',
             handler: function(){
                 entitywin = new AxGen.EntityWin();
@@ -48,7 +54,12 @@ Ext.extend(AxGen.BundleMenu, Ext.Toolbar, {
             handler: function(){
                 entitieswin = new AxGen.EntitiesWin();
                 entitieswin.show();
-            }           
+            }  
+        },{
+            text: 'Schema update',
+            handler: function(){
+                Ext.MessageBox.alert("Sorry"," :( This is not developed yet");
+            }            
         },{            
             text: 'CRUD',
             handler: function(){
