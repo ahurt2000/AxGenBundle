@@ -7,13 +7,7 @@ As the bundle developers use it only uses the fictional **Acme** vendor.
 AxGen uses the bundle "Sensio Generator" for their actions. 
 The bundle uses the Extjs 2.2 lib for the visual interface.
 
-**This bundle is under develop yet**
-
-now works:
-
-- bundle generator
-- doctrine entity generator
-- entities
+*This package is only an experiment, as it requires the apache user has write permissions in "src", "app/AppKernel.php" and "app/config/routing.yml" *
 
 
 Install
@@ -60,3 +54,7 @@ The application show you a menu for easy access to the differents options:
 - Entities: Update all entities 
 
   ![Generate/update entities](http://i55.tinypic.com/e7ch1f.png)
+
+- CRUD: generate CRUD 
+
+  ![Generate CRUD](http://tinypic.com/r/25h05dy/7)
