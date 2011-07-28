@@ -1,4 +1,13 @@
 <?php
+/*
+ * This file is part of the Axgen Bundle.
+ *
+ * (c) Alejandro Hurtado <ahurt2000@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Acme\AxGenBundle\AxGenerator;
 
 use Sensio\Bundle\GeneratorBundle\Generator\DoctrineEntityGenerator;
@@ -7,7 +16,11 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
 use Sensio\Bundle\GeneratorBundle\Command\Validators;
 use Symfony\Component\HttpFoundation\Request;
 use Acme\AxGenBundle\AxGenerator\AxUtils;
-
+/**
+ * Generate a Entities 
+ * 
+ * @author: Alejandro Hurtado <ahurt2000@gmail.com> 
+ */
 class AxDoctrineEntityGeneratorCall 
 {
     private $filesystem;

@@ -1,4 +1,12 @@
 <?php
+/*
+ * This file is part of the Axgen Bundle.
+ *
+ * (c) Alejandro Hurtado <ahurt2000@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace Acme\AxGenBundle\AxGenerator;
 
@@ -11,17 +19,24 @@ use Sensio\Bundle\GeneratorBundle\Manipulator\KernelManipulator;
 use Sensio\Bundle\GeneratorBundle\Manipulator\RoutingManipulator;
 use Acme\AxGenBundle\AxGenerator\AxUtils;
 
+/**
+ * Generate a Bundle calling the Sensio BundleGenerator
+ * 
+ * @author: Alejandro Hurtado <ahurt2000@gmail.com>
+ */
 class AxBundleGeneratorCall  { 
 
     private $filesystem;
     private $generator;
     
-    public function __construct(Filesystem $filesystem, $skeletonDir) {
+    public function __construct(Filesystem $filesystem, $skeletonDir) 
+    {
         $this->filesystem = $filesystem;
         $this->generator  = new BundleGenerator($filesystem, $skeletonDir);
     }
 
-    public function execute(Request $request, $root_dir, $kernel) {
+    public function execute(Request $request, $root_dir, $kernel) 
+    {
         $namespace = $request->request->get('nb_namespace');
         $bundlename = $request->request->get('nb_name');
         $format = $request->request->get('nb_format');
@@ -103,7 +118,8 @@ class AxBundleGeneratorCall  {
      * @param string $dir
      * @return array 
      */
-    protected function checkAutoloader($namespace, $bundle, $dir) {
+    protected function checkAutoloader($namespace, $bundle, $dir) 
+    {
         if (!class_exists($namespace . '\\' . $bundle)) {
             return  array(
                 '- Edit the <b>app/autoloader.php</b> file and register the bundle',
@@ -124,7 +140,8 @@ class AxBundleGeneratorCall  {
      * @param string $bundle
      * @return array 
      */
-    protected function updateKernel(KernelInterface $kernel, $namespace, $bundle) {
+    protected function updateKernel(KernelInterface $kernel, $namespace, $bundle) 
+    {
         $manip = new KernelManipulator($kernel);
         try {
             $ret = $manip->addBundle($namespace . '\\' . $bundle);

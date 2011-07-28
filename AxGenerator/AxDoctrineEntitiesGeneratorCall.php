@@ -1,4 +1,12 @@
 <?php
+/*
+ * This file is part of the Axgen Bundle.
+ *
+ * (c) Alejandro Hurtado <ahurt2000@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace Acme\AxGenBundle\AxGenerator;
 
@@ -8,6 +16,11 @@ use Doctrine\ORM\Tools\EntityRepositoryGenerator;
 use Doctrine\ORM\Tools\EntityGenerator;
 use Acme\AxGenBundle\AxGenerator\AxUtils;
 
+/**
+ * Generate Entities 
+ * 
+ * @author: Alejandro Hurtado <ahurt2000@gmail.com>
+ */
 class AxDoctrineEntitiesGeneratorCall
 {
     public function execute($request,$kernel,$doctrine)

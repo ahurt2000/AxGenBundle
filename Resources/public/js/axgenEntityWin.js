@@ -42,9 +42,9 @@ AxGen.EntityWin = function(config){
 }
 
 Ext.extend(AxGen.EntityWin, Ext.Window, {
-    id:'win-bundle-gen',
+    id:'win-entity-gen',
     layout:'form',
-    title:'Bundle Generator',
+    title:'Entity Generator',
     autoScroll:true,
     modal: true,
     closeAction:'close',
@@ -53,35 +53,9 @@ Ext.extend(AxGen.EntityWin, Ext.Window, {
     width: 400,
     labelWidth: 130,
     init: function(){
-        me = this;
+        me = this;        
         
-        /* registered bundle list combo */            
-        var bundle_rec = Ext.data.Record.create([
-            { name: 'short'} ,
-            { name: 'name'} 
-        ]);
-        
-        var bundleReader = new Ext.data.JsonReader({
-            root: "data",
-            totalProperty: "total"
-        }, bundle_rec);
-        
-        var dsbundles = new Ext.data.Store({
-            url: list_url,
-            reader: bundleReader
-        });
-        
-        dsbundles.sort("name","ASC"); 
-        
-        this.comboBundles = new Ext.form.ComboBox({
-            fieldLabel: 'Bundle',
-            forceSelection:true,
-            store: dsbundles,
-            valueField: 'name',
-            displayField: 'name',
-            triggerAction: 'all',
-            mode:'remote'
-        });
+        this.comboBundles = new AxGen.Bundles.Combo();
         
         /* cambiar el valor de entity_name segun el valor del combo */
         this.comboBundles.on('select',function(e, op){

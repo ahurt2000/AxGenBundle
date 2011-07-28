@@ -1,5 +1,12 @@
 <?php
-
+/*
+ * This file is part of the Axgen Bundle.
+ *
+ * (c) Alejandro Hurtado <ahurt2000@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 namespace Acme\AxGenBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -7,15 +14,15 @@ use Symfony\Component\HttpFoundation\Response;
 use Acme\AxGenBundle\AxGenerator\AxBundleGeneratorCall;
 use Acme\AxGenBundle\AxGenerator\AxDoctrineEntityGeneratorCall;
 use Acme\AxGenBundle\AxGenerator\AxDoctrineEntitiesGeneratorCall;
-
+use Acme\AxGenBundle\AxGenerator\AxDoctrineCrudGeneratorCall;
 use Symfony\Component\DependencyInjection\Container;
 
 class DefaultController extends Controller {
 
     public function indexAction() {
         $root_dir = dirname($this->container->getParameter('kernel.root_dir'));
-        $bundles = $this->container->get('kernel')->getBundles();
-        return $this->render('AcmeAxGenBundle:Default:index.html.twig', array('root_dir' => $root_dir, 'bundles' => $bundles));
+//        $bundles = $this->container->get('kernel')->getBundles();
+        return $this->render('AcmeAxGenBundle:Default:index.html.twig', array('root_dir' => $root_dir)); //, 'bundles' => $bundles));
     }
     
     /**
@@ -81,6 +88,23 @@ class DefaultController extends Controller {
         $doctrine = $this->container->get('doctrine');
         
         $generator = new AxDoctrineEntitiesGeneratorCall();
+        $output = $generator->execute($request,$kernel,$doctrine);
+        
+        return new Response(json_encode($output)); 
+    }
+    
+    /**
+     * Generate CRUD
+     * 
+     * @return Response 
+     */
+    public function genCrudAction(){
+        $request = $this->getRequest();
+        $kernel = $this->container->get('kernel');
+        $doctrine = $this->container->get('doctrine');
+        $root_dir = dirname($this->container->getParameter('kernel.root_dir'));
+           
+        $generator = new AxDoctrineCrudGeneratorCall($this->container->get('filesystem'),  $root_dir . '/vendor/bundles/Sensio/Bundle/GeneratorBundle/Resources/skeleton');
         $output = $generator->execute($request,$kernel,$doctrine);
         
         return new Response(json_encode($output)); 

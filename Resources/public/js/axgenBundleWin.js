@@ -225,32 +225,6 @@ Ext.extend(AxGen.BundleWin, Ext.Window, {
             ]
         });
         
-//        this.add(this.bundle_list);
-//        this.add(this.bundle_namespace);
-//        this.add(this.bundle_name);
-//        this.add(this.bundle_target_dir);
-//        this.add(this.bundle_format);
-//        this.add({
-//            layout:'column',
-//            bodyStyle:'padding:5px;margin:5px 2px',
-//            hideBorders: true,
-//            items:[{
-//                columnWidth:1,
-//                layout: 'form',
-//                labelWidth: 180,
-//                items: [this.bundle_structure]
-//            },{
-//                columnWidth:1,
-//                layout: 'form',
-//                labelWidth: 180,
-//                items: [this.bundle_kernel_update]  
-//            },{
-//                columnWidth:1,
-//                layout: 'form',
-//                labelWidth: 180,
-//                items: [this.bundle_route_update]                      
-//            }]
-//        });
 
     },
     save:function(){

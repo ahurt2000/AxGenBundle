@@ -18,3 +18,7 @@ AxGenBundle_gen_entity:
 AxGenBundle_gen_entities:
     pattern:  /axgen/genentities
     defaults: { _controller: AcmeAxGenBundle:Default:genEntities }    
+    
+AxGenBundle_gen_crud:
+    pattern:  /axgen/gencrud
+    defaults: { _controller: AcmeAxGenBundle:Default:genCrud }     

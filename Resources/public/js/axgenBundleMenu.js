@@ -52,7 +52,8 @@ Ext.extend(AxGen.BundleMenu, Ext.Toolbar, {
         },{            
             text: 'CRUD',
             handler: function(){
-                Ext.MessageBox.alert("Sorry"," :( This is not developed yet");
+                crudwin = new AxGen.CrudWin();
+                crudwin.show();
             } 
         }]
     }]

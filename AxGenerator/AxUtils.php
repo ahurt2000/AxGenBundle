@@ -14,6 +14,8 @@ use Sensio\Bundle\GeneratorBundle\Command\Validators;
 
 /**
  *  Static class with utils stuffs
+ * 
+ * @author: Alejandro Hurtado <ahurt2000@gmail.com>
  */
 class AxUtils
 {

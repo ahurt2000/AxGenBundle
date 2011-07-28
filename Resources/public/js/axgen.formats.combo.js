@@ -1,5 +1,5 @@
 /*
- * Entity windows.   - Ext JS Library 2.2
+ * formats combo.   - Ext JS Library 2.2
  * bundle: AxgenBundle 
  * Alejandro Hurtado <ahurt2000@gmail.com>
  *
@@ -32,4 +32,4 @@ Ext.extend(AxGen.Formats.Combo,Ext.form.ComboBox,{
     forceSelection: true
 });
 
-Ext.reg('axgenformats',AxGen.Formats.Combo );
+Ext.reg('axgenformatscombo',AxGen.Formats.Combo );

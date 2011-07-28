@@ -15,6 +15,7 @@
     list_url = "{{ path('AxGenBundle_list_bundle')|addslashes|raw }}";
     gen_entity_url = "{{ path('AxGenBundle_gen_entity')|addslashes|raw }}";
     gen_entities_url = "{{ path('AxGenBundle_gen_entities')|addslashes|raw }}";
+    gen_crud_url = "{{ path('AxGenBundle_gen_crud')|addslashes|raw }}";
     //-->
   </script>
 {% endblock %}   
@@ -23,11 +24,13 @@
     <script type="text/javascript" src="{{ asset('bundles/acmeaxgen/js/patch.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/acmeaxgen/js/Ext.ux.renderer.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/acmeaxgen/js/axgen.formats.combo.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/acmeaxgen/js/axgen.bundles.combo.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/acmeaxgen/js/axgenBundleMenu.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/acmeaxgen/js/axgenBundleApp.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/acmeaxgen/js/axgenBundleWin.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/acmeaxgen/js/axgenEntityWin.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/acmeaxgen/js/axgenEntitiesWin.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/acmeaxgen/js/axgenCrudWin.js') }}"></script>
 {% endblock %}
 
 {% block content_header %}

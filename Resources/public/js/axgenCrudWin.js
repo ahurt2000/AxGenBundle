@@ -1,5 +1,5 @@
 /*
- * Entities windows.   - Ext JS Library 2.2
+ * CRUD windows.   - Ext JS Library 2.2
  * bundle: AxgenBundle 
  * Alejandro Hurtado <ahurt2000@gmail.com>
  *
@@ -7,8 +7,8 @@
  * file that was distributed with this source code.
  * 
  */
-Ext.ns('AxGen.EntitiesWin');
-AxGen.EntitiesWin = function(config){
+Ext.ns('AxGen.CrudWin');
+AxGen.CrudWin = function(config){
     Ext.apply(this, config);
     this.save_bundle = new Ext.Button({
         text:'Save', 
@@ -31,86 +31,95 @@ AxGen.EntitiesWin = function(config){
  
     Ext.apply(this, {
         bbar:[    
-        new Ext.Toolbar.Fill(),            
+        new Ext.Toolbar.Fill(),
         this.save_bundle,
-
         this.cancel_edit
         ]
     });    
     
-    AxGen.EntitiesWin.superclass.constructor.call(this);
+    AxGen.CrudWin.superclass.constructor.call(this);
     this.init();
 }
 
-Ext.extend(AxGen.EntitiesWin, Ext.Window, {
-    id:'win-entities-gen',
+Ext.extend(AxGen.CrudWin,Ext.Window, {
+    id:'win-crud-gen',
     layout:'form',
-    title:'Entities Generator',
+    title:'CRUD Generator',
     autoScroll:true,
+    modal: true,
     closeAction:'close',
     closable: true,
     bodyStyle:'padding:5px 5px 0',
-    labelWidth: 130,
-    modal: true,
     width: 400,
+    labelWidth: 130,
     init: function(){
         me = this;
-        
-
         this.comboBundles = new AxGen.Bundles.Combo();
         
-        /* only ended with Bundle pattern Acme/xxxBundle  */
+        /* entity name  */
         this.entity_name = this.add(new Ext.form.TextField({
             fieldLabel: 'Entity name', 
             name: 'txtEntityName', 
             anchor: '100%',
             blankText: 'something like "Post"',
-            emptyText: 'Entity name (opcional)',
-            allowBlank: true          
+            emptyText: 'Entity name',
+            allowBlank: false       
         }));
-       
-        /* changing directory separators \ by / */
-//        default_bundle_target_dir = root_dir.replace(/\\/g,'/') + '/src'; 
-             
-        this.entity_path = this.add(new Ext.form.TextField({
-            fieldLabel: 'Entity path', 
+
+        this.route_prefix = this.add(new Ext.form.TextField({
+            fieldLabel: 'Route prefix', 
             name: 'txtEntityName', 
-            anchor: '100%' 
+            anchor: '100%',
+            blankText: 'somthing like /post',
+            emptyText: 'a prefix like /post',
+            allowBlank: false       
         }));
         
-        this.backup = new Ext.form.Checkbox({
-            fieldLabel: 'Backup?',
-            name: 'backup',
-            id: 'backup',
+        /* write actions checkbox */
+        this.write_actions = new Ext.form.Checkbox({
+            fieldLabel: 'Write actions?',
+            name: 'writeactions',
+            id: 'writeactions',
+            anchor: '100%',
+            checked: false
+        });    
+        
+        /* formats */
+        this.config_format = new AxGen.Formats.Combo({
+            fieldLabel: 'Configuration format', 
+            name: 'CrudCfgFormat'
+        });
+        
+        
+        this.route_update = new Ext.form.Checkbox({
+            fieldLabel: 'Automatic routing update',
+            name: 'bundleRouteUpdate',
+            id: 'bdl_route_update',
             anchor: '100%',
             checked: true
-        });      
-       
- 
+        });        
         
         this.add(this.comboBundles);
         this.add(this.entity_name);
-        this.add(this.entity_path);
-        this.add(this.backup);
-
-
+        this.add(this.config_format);
+        this.add(this.route_prefix);
+        this.add(this.write_actions);
+        this.add(this.route_update);
+        
+        
     },
-    
     save:function(){
-        var data;
-        bundlename = this.comboBundles.getValue();
-        entityname = this.entity_name.getValue();
-        if(!Ext.isEmpty(entityname)){
-            bundlename += ':'+ entityname;
-        }
+        var entity = this.comboBundles.getValue()+":"+this.entity_name.getValue();
         Ext.Ajax.request({
-            url: gen_entities_url,
+            url: gen_crud_url,
             method: 'POST',
             params:  {
-                'name'             : bundlename,
-                'path'             : this.entity_path.getValue(),
-                'backup'           : this.backup.getValue()
-                
+                'bundle-name'   : this.comboBundles.getValue(),
+                'entity'        : this.entity_name.getValue(),
+                'route-prefix'  : this.route_prefix.getValue(),
+                'with-write'    : this.write_actions.getValue(),
+                'format'        : this.config_format.getValue(),
+                'route_update'  : this.route_update.getValue()
             },            
             success: function(objServerResponse){
                 var data = Ext.decode(objServerResponse.responseText);
@@ -129,9 +138,7 @@ Ext.extend(AxGen.EntitiesWin, Ext.Window, {
                 
         });
 
-    }    
+    }     
 });
 
-Ext.reg('axentitieswin',AxGen.EntitiesWin );
-
-
+Ext.reg('axcrudwin', AxGen.CrudWin );
