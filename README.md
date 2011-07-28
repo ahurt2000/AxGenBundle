@@ -57,4 +57,4 @@ The application show you a menu for easy access to the differents options:
 
 - CRUD: generate CRUD 
 
-  ![Generate CRUD](http://tinypic.com/r/25h05dy/7)
+  ![Generate CRUD](http://i51.tinypic.com/25h05dy.png)
